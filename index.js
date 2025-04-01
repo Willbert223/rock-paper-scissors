@@ -17,12 +17,43 @@ function getComputerChoice(){
 function getHumanChoice(){
     let choice =  window.prompt("Enter rock, paper or scissors").toLowerCase();
     // code that stops me from accepting other answers and any capitilization
-    if (choice === "rock" || choice === "paper" || choice === "scissors"){
-        return choice 
-    }else{
-        return choice = "Invalid choice try again"
+    while(true){
+        if (choice === "rock" || choice === "paper" || choice === "scissors"){
+            return choice; 
+        }else{
+            choice = window.prompt("Invalid choice try again");
+        }
+       
     }
-   
 }
-console.log(getComputerChoice())
-console.log(getHumanChoice())
+function playRound(humanChoice, computerChoice){
+
+    // conditions to compare choices and what console will log
+    if(humanChoice === "rock" && computerChoice === "scissors"){
+        console.log("You win!");
+        humanScore++;
+    } else if(humanChoice === "scissors" && computerChoice === "paper"){
+        console.log("You won!");
+        humanScore++;
+    } else if(humanChoice === "paper" && computerChoice === "rock"){
+        console.log("You Win!");
+        humanScore++;
+    } else if(humanChoice === computerChoice){
+        console.log("It's A Tie!");
+    } else{
+        console.log("You lose!");
+        computerScore++;
+    }
+
+}
+//code that turns all choices as arguments
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);//
+
+
+console.log(computerSelection)
+console.log(humanSelection)
+console.log(humanScore)
+console.log(computerScore)
