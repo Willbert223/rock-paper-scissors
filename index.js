@@ -26,6 +26,7 @@ function getHumanChoice(){
        
     }
 }
+
 function playRound(humanChoice, computerChoice){
 
     // conditions to compare choices and what console will log
@@ -46,7 +47,8 @@ function playRound(humanChoice, computerChoice){
     }
 
 }
-//code that turns all choices as arguments
+function playGame(){
+    //code that turns all choices as arguments
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
@@ -57,3 +59,10 @@ console.log(computerSelection)
 console.log(humanSelection)
 console.log(humanScore)
 console.log(computerScore)
+}
+
+playGame();
+playGame();
+playGame();
+playGame();
+playGame();
