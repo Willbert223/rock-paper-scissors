@@ -1,3 +1,23 @@
+document.getElementById('rock').addEventListener('click', () => {
+    const humanSelection = 'rock';
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+});
+
+document.getElementById('paper').addEventListener('click', () => {
+    const humanSelection = 'paper';
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+});
+
+document.getElementById('scissors').addEventListener('click', () => {
+    const humanSelection = 'scissors';
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+});
+
+
+
 let humanScore = 0;
 let computerScore = 0;
 
@@ -28,23 +48,29 @@ function getHumanChoice(){
 }
 
 function playRound(humanChoice, computerChoice){
-
+    // displays the result of every round
+    const resultText = document.getElementById('resultText');
+    let resultMessage = '';
     // conditions to compare choices and what console will log
     if(humanChoice === "rock" && computerChoice === "scissors"){
-        console.log("You win!");
+        resultMessage = "You Win!"
         humanScore++;
     } else if(humanChoice === "scissors" && computerChoice === "paper"){
-        console.log("You won!");
+        resultMessage = "You Win!"
         humanScore++;
     } else if(humanChoice === "paper" && computerChoice === "rock"){
-        console.log("You Win!");
+       resultMessage = "You Win!"
         humanScore++;
     } else if(humanChoice === computerChoice){
-        console.log("It's A Tie!");
+        resultMessage = "It's A Tie!";
     } else{
-        console.log("You lose!");
+        resultMessage = "You lose!";
         computerScore++;
     }
+    // display result
+    resultText.textContent = resultMessage;
+    resultText.style.display = 'block';
+    resultText.style.fontSize = '24px'
 
 }
 function playGame(){
@@ -55,14 +81,12 @@ const computerSelection = getComputerChoice();
 playRound(humanSelection, computerSelection);//
 
 
+
+
 console.log(computerSelection)
 console.log(humanSelection)
 console.log(humanScore)
 console.log(computerScore)
 }
 
-playGame();
-playGame();
-playGame();
-playGame();
-playGame();
+
