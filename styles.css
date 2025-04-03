@@ -1,0 +1,12 @@
+#btn-container{
+    font-size: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#resultText{
+    text-align: center;
+}
+.buttons{
+    font-size: 48px;
+}

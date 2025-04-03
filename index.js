@@ -71,6 +71,7 @@ function playRound(humanChoice, computerChoice){
     resultText.textContent = resultMessage;
     resultText.style.display = 'block';
     resultText.style.fontSize = '24px'
+    resultText.style.textAlign = 'center'
 
 }
 function playGame(){
