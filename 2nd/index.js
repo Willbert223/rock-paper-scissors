@@ -2,6 +2,25 @@
  let humanScore = 0;
  let computerScore = 0;
 
+ // listening for button clicks
+ document.getElementById('rock').addEventListener('click', () => {
+    const humanSelection = 'rock';
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+});
+document.getElementById('paper').addEventListener('click', () => {
+    const humanSelection = 'paper';
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+});
+document.getElementById('scissors').addEventListener('click', () => {
+    const humanSelection = 'scissors';
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+});
+
+
+
 // When the computer generates number
 function getComputerChoice() {
 //  choose a number randomly that returns one string
@@ -83,7 +102,7 @@ else {
 
 }
 // declares playround function and scores from the global scope.
-function playGame() {
+/*function playGame() {
     
     // these call on the prompt and the random num generator. 
     const humanSelection = getHumanChoice();
@@ -99,13 +118,9 @@ function playGame() {
   
  
  
-}
+}*/
 // call function 5 times
-playGame()
-playGame()
-playGame()
-playGame()
-playGame()
+
 
  // if humanscore is greater than computer score return player beat computer after 5 rounds.
  if (humanScore + computerScore === 5) {
