@@ -1,24 +1,38 @@
+
  //score count
  let humanScore = 0;
  let computerScore = 0;
 
- // listening for button clicks
- document.getElementById('rock').addEventListener('click', () => {
-    const humanSelection = 'rock';
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-});
-document.getElementById('paper').addEventListener('click', () => {
-    const humanSelection = 'paper';
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-});
-document.getElementById('scissors').addEventListener('click', () => {
-    const humanSelection = 'scissors';
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-});
+ // result element
+ const result = document.getElementById('result');
 
+ // listening for button clicks
+document.getElementById('rock').addEventListener('click', () => handlePlayerChoice('rock'));
+document.getElementById('paper').addEventListener('click', () => handlePlayerChoice('paper'));
+document.getElementById('scissors').addEventListener('click', () => handlePlayerChoice('scissors'));
+
+// Handle player choice
+function handlePlayerChoice(humanSelection) {
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+    // display current points each round played
+    // if humanscore is 5 then display human won by amount
+    // else if computerscore is 5 display you lost by this many points
+    // reset scores to zero 
+    const scoreDisplay = document.getElementById('score');
+    scoreDisplay.textContent = `Player: ${humanScore} | Computer: ${computerScore}`;
+
+
+    if (humanScore === 5) {
+        result.textContent = `🏆 Player wins by ${humanScore - computerScore} points!`;
+        humanScore = 0;
+        computerScore = 0;
+    } else if (computerScore === 5) {
+        result.textContent = `💻 Computer wins by ${computerScore - humanScore} points!`;
+        humanScore = 0;
+        computerScore = 0;
+    }
+}
 
 
 // When the computer generates number
@@ -60,47 +74,51 @@ const num = Math.random()
 
 
 function playRound(getHumanChoice, getComputerChoice) {
+// display result message every round
+const result = document.getElementById('result')
+let resultMessage = '';
+
 // if value is < value print you win
 if (getHumanChoice === 'rock' && getComputerChoice === 'scissors') {
     humanScore++
-    humanScore = humanScore;
-    console.log("player score: ", humanScore);
-    console.log('Player wins, rocks crush scissors') 
+    resultMessage = 'Player wins, rocks crush scissors'
     
 
 } else if (getHumanChoice === 'paper' && getComputerChoice  === 'rock') {
     humanScore++
-    humanScore = humanScore;
-    console.log("player score: ", humanScore);
-    console.log('Player wins, paper covers rocks')
+    resultMessage = 'Player wins, paper covers rocks'
     
 } else if (getHumanChoice === 'scissors' && getComputerChoice  === 'paper') {
     humanScore++
-    humanScore = humanScore;
-    console.log("player score: ", humanScore);
-    console.log('Player wins, scissors cut paper')
+    resultMessage = 'Player wins, scissors cut paper'
 }
 // if value = value its a tie
-else if (getHumanChoice === 'paper' && getComputerChoice  === 'paper') {
-    console.log('You tied, paper')
-}else if (getHumanChoice === 'rock' && getComputerChoice  === 'rock') {
-    console.log('You tied, rock')
-}else if (getHumanChoice === 'scissors' && getComputerChoice === 'scissors') {
-    console.log('You tied, scissors')
+else if (getHumanChoice === getComputerChoice) {
+    resultMessage = 'You tied'
 }
 
 // if value is > value print you lose
 else {
     computerScore++;
-    computerScore = computerScore;
-    console.log("computer score: ", computerScore);
-    console.log('Computer wins')
+    resultMessage = 'Computer wins'
     
 }
 
+// display result after every game played
+result.textContent = resultMessage;
+result.style.display = 'block';
+result.style.fontSize = '24px'
+
+
 
 
 }
+
+
+
+
+
+
 // declares playround function and scores from the global scope.
 /*function playGame() {
     
@@ -123,7 +141,7 @@ else {
 
 
  // if humanscore is greater than computer score return player beat computer after 5 rounds.
- if (humanScore + computerScore === 5) {
+ /*if (humanScore + computerScore === 5) {
     if (humanScore > computerScore) {
         console.log(`🏆 Player beat computer after a total of ${humanScore + computerScore} rounds.`);
     } else if (computerScore > humanScore) {
@@ -131,7 +149,7 @@ else {
     } else {
         console.log(`🤝 It's a tie after ${humanScore + computerScore} rounds.`);
     }
-}
+}*/
 
 
 
